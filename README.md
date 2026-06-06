@@ -49,4 +49,4 @@ See [`/docs/architecture.md`](./docs/architecture.md) for detail.
 
 ## Why This Exists
 
-Built as a side project after researching how independent auto shops in Ottawa actually run their businesses. Inspired by Zane Cole's "Vrooom AI" model in the US, adapted for the Canadian market with bilingual support and CASL compliance.
+Built as a side project after researching how independent auto shops in Ottawa actually run their businesses.
