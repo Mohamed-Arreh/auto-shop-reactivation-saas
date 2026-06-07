@@ -1,52 +1,36 @@
-import { createClient } from '@/lib/supabase/server'
-import { signout } from '@/app/actions/auth'
+const stats = [
+  { label: 'Recovered this month' },
+  { label: 'Active conversations' },
+  { label: 'Booked appointments' },
+  { label: 'Declined work pile' },
+]
 
-export default async function DashboardPage() {
-  const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-  const { data: membership } = await supabase
-    .from('shop_users')
-    .select('shop_id')
-    .eq('user_id', user!.id)
-    .eq('is_active', true)
-    .limit(1)
-    .maybeSingle()
-
-  let shopName: string | null = null
-  if (membership) {
-    const { data: shop } = await supabase
-      .from('shops')
-      .select('name')
-      .eq('id', membership.shop_id)
-      .maybeSingle()
-    shopName = shop?.name ?? null
-  }
-
+export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-        <h1 className="text-lg font-semibold text-gray-900">Dashboard</h1>
-        <form action={signout}>
-          <button
-            type="submit"
-            className="text-sm text-gray-500 hover:text-gray-900"
-          >
-            Sign out
-          </button>
-        </form>
-      </header>
+    <div>
+      <h1 className="text-xl font-semibold text-gray-900">Dashboard</h1>
 
-      <main className="px-6 py-10">
-        {shopName && (
-          <p className="text-sm text-gray-500 mb-1">{shopName}</p>
-        )}
-        <p className="text-gray-700">
-          Welcome, <span className="font-medium">{user?.email}</span>
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {stats.map((stat) => (
+          <div
+            key={stat.label}
+            className="rounded-xl border border-gray-200 bg-white p-5"
+          >
+            <p className="text-sm text-gray-500">{stat.label}</p>
+            <p className="mt-2 text-2xl font-semibold text-gray-900">0</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-6 rounded-xl border border-dashed border-gray-300 bg-white p-6">
+        <p className="text-sm font-medium text-gray-900">
+          Get started: connect a data source
         </p>
-      </main>
+        <p className="mt-1 text-sm text-gray-500">
+          Import your shop&apos;s repair orders to start recovering declined
+          work and tracking results here.
+        </p>
+      </div>
     </div>
   )
 }
