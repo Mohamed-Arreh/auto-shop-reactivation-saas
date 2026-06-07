@@ -7,6 +7,24 @@ export default async function DashboardPage() {
     data: { user },
   } = await supabase.auth.getUser()
 
+  const { data: membership } = await supabase
+    .from('shop_users')
+    .select('shop_id')
+    .eq('user_id', user!.id)
+    .eq('is_active', true)
+    .limit(1)
+    .maybeSingle()
+
+  let shopName: string | null = null
+  if (membership) {
+    const { data: shop } = await supabase
+      .from('shops')
+      .select('name')
+      .eq('id', membership.shop_id)
+      .maybeSingle()
+    shopName = shop?.name ?? null
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
@@ -22,6 +40,9 @@ export default async function DashboardPage() {
       </header>
 
       <main className="px-6 py-10">
+        {shopName && (
+          <p className="text-sm text-gray-500 mb-1">{shopName}</p>
+        )}
         <p className="text-gray-700">
           Welcome, <span className="font-medium">{user?.email}</span>
         </p>

@@ -15,5 +15,17 @@ export default async function DashboardLayout({
     redirect('/login')
   }
 
+  const { data: membership } = await supabase
+    .from('shop_users')
+    .select('id')
+    .eq('user_id', user.id)
+    .eq('is_active', true)
+    .limit(1)
+    .maybeSingle()
+
+  if (!membership) {
+    redirect('/onboarding')
+  }
+
   return <>{children}</>
 }
