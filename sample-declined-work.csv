@@ -1,0 +1,13 @@
+customer_first_name,customer_last_name,customer_phone,vehicle_year,vehicle_make,vehicle_model,ro_number,ro_date,line_item_description,line_item_total,line_item_status,urgency
+John,Smith,555-201-3344,2018,Honda,Civic,RO-1042,2026-05-12,Front brake pads and rotors replacement,412.50,declined,red
+John,Smith,555-201-3344,2018,Honda,Civic,RO-1042,2026-05-12,Cabin air filter replacement,38.00,approved,green
+Maria,Garcia,555-330-7788,2020,Toyota,RAV4,RO-1043,2026-05-13,Rear brake pad replacement,289.99,declined,yellow
+David,Chen,555-410-2299,2016,Ford,F-150,RO-1044,2026-05-14,Transmission fluid flush and filter,245.00,declined,yellow
+David,Chen,555-410-2299,2016,Ford,F-150,RO-1044,2026-05-14,Oil change synthetic blend,79.95,approved,green
+Aisha,Mohammed,555-560-1123,2019,Subaru,Outback,RO-1045,2026-05-18,Timing belt and water pump replacement,875.00,declined,red
+Aisha,Mohammed,555-560-1123,2019,Subaru,Outback,RO-1045,2026-05-18,Wiper blade replacement,32.50,approved,green
+Robert,Nguyen,555-622-9081,2015,Chevrolet,Malibu,RO-1046,2026-05-20,Battery replacement,189.00,approved,yellow
+Robert,Nguyen,555-622-9081,2015,Chevrolet,Malibu,RO-1046,2026-05-20,Serpentine belt replacement,156.75,declined,yellow
+Linda,Park,555-733-4456,2021,Mazda,CX-5,RO-1047,2026-05-26,Front strut assembly replacement,612.40,declined,red
+Marcus,Johnson,555-844-5567,2017,Jeep,Grand Cherokee,RO-1048,2026-06-01,Spark plug replacement (6-cylinder),224.00,declined,yellow
+Marcus,Johnson,555-844-5567,2017,Jeep,Grand Cherokee,RO-1048,2026-06-01,Tire rotation and balance,64.99,approved,green
