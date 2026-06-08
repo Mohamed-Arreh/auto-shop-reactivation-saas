@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { CsvUploadAdapter } from '@/lib/data-sources/csv-adapter'
 import type { NormalizedRecord } from '@/lib/data-sources/types'
+import { computeShopScores } from '@/app/actions/scoring'
 
 type ImportState = { error: string | null }
 
@@ -221,6 +222,10 @@ export async function importCsv(
     } catch {
       failed++
     }
+  }
+
+  if (imported > 0) {
+    await computeShopScores()
   }
 
   redirect(`/queue?imported=${imported}&failed=${failed}`)
