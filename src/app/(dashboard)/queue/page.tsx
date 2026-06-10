@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { EmptyState } from '../_components/empty-state'
+import { GenerateMessageButton } from './generate-message-button'
 import { RecalculateButton } from './recalculate-button'
 
 const URGENCY_STYLES: Record<string, string> = {
@@ -169,6 +170,9 @@ export default async function QueuePage({
                   <th className="px-4 py-3 text-left font-medium text-gray-500">
                     RO date
                   </th>
+                  <th className="px-4 py-3 text-right font-medium text-gray-500">
+                    Recovery
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -218,6 +222,9 @@ export default async function QueuePage({
                       </td>
                       <td className="px-4 py-3 text-gray-700">
                         {item.repair_order?.ro_date ?? '—'}
+                      </td>
+                      <td className="px-4 py-3 text-right">
+                        <GenerateMessageButton lineItemId={item.id} />
                       </td>
                     </tr>
                   )

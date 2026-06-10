@@ -7,7 +7,11 @@ const sections = [
     description: 'Import repair order history from a CSV export.',
     href: '/settings/data-sources',
   },
-  { title: 'Shop voice', description: 'Coming soon.', href: null },
+  {
+    title: 'Shop voice',
+    description: 'Configure how AI-drafted messages sound for your shop.',
+    href: '/settings/voice',
+  },
   { title: 'Phone numbers', description: 'Coming soon.', href: null },
   { title: 'Team', description: 'Coming soon.', href: null },
   { title: 'Notifications', description: 'Coming soon.', href: null },
